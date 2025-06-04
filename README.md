@@ -1,8 +1,8 @@
 # Gym-Locations
 
 # Features
-- View all gyms in Davis, CA which uses MapboxGL
-- View Gym Cards with Image, Title, and Description of Gym (Planning to add link to Gym Soon)
+- View all food spots near Hitotsubashi University which uses MapboxGL
+- View Food Cards with image, name, description, and link to the food spot's website
 
 # Contributors
 Brent Chen
