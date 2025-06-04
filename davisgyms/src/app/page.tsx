@@ -19,7 +19,6 @@ function App(): JSX.Element {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-
       {/* Map Section */}
       <section className="w-full px-6 md:px-12 lg:px-24 py-8">
         <div className="rounded-2xl overflow-hidden shadow-md">
@@ -29,9 +28,14 @@ function App(): JSX.Element {
 
       {/* Gym Cards Section */}
       <section className="w-full px-6 md:px-12 lg:px-24 py-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Explore Gyms</h2>
-        <div className="rounded-2xl shadow-sm bg-white">
-          <GymList gyms={gymLocations} handleSelectCoordinates={handleSelectGym} />
+        <h2 className="text-2xl font-bold text-gray-800 m-6 text-center">
+          Explore Gyms
+        </h2>
+        <div className="rounded-2xl shadow-sm bg-white p-5 border border-gray-200">
+          <GymList
+            gyms={gymLocations}
+            handleSelectCoordinates={handleSelectGym}
+          />
         </div>
       </section>
 
