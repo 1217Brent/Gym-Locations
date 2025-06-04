@@ -1,20 +1,20 @@
 "use client";
 
 import { JSX, MouseEventHandler } from "react";
-import { Gym } from "../dataTypes/Gym";
+import { FoodPlace } from "../dataTypes/FoodPlace";
 
-type GymCardProps = {
-  gym: Omit<Gym, "id" | "coordinates">;
+type FoodCardProps = {
+  foodplace: Omit<FoodPlace, "id" | "coordinates">;
   handleCoordsChange: MouseEventHandler<HTMLDivElement>;
 };
 
-function GymCard({ gym, handleCoordsChange }: GymCardProps): JSX.Element {
-  const { name, image, description, link } = gym;
+export function FoodPlaceCard({ foodplace, handleCoordsChange }: FoodCardProps): JSX.Element {
+  const { name, image, description, link } = foodplace;
 
   return (
     <div
       onClick={handleCoordsChange}
-      className="relative flex flex-col my-6 bg-[#1b2a52] shadow-sm  rounded-lg w-96 cursor-pointer"
+      className="relative flex flex-col my-6 bg-[#1b2a52] shadow-sm rounded-lg w-96 cursor-pointer"
     >
       <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
         <img
@@ -37,7 +37,7 @@ function GymCard({ gym, handleCoordsChange }: GymCardProps): JSX.Element {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block rounded-md bg-blue-900 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-800 focus:shadow-none active:bg-blue-800 hover:bg-blue-800 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          onClick={(e) => e.stopPropagation()} // optional if inside clickable card
+          onClick={(e) => e.stopPropagation()}
         >
           Read more
         </a>
@@ -45,5 +45,3 @@ function GymCard({ gym, handleCoordsChange }: GymCardProps): JSX.Element {
     </div>
   );
 }
-
-export { GymCard };

@@ -2,17 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
-import { Gym } from "./dataTypes/Gym";
+import { FoodPlace } from "./dataTypes/FoodPlace";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
 
-type GymListProps = {
-  gymList: Gym[];
-  currCoords: Gym["coordinates"];
+type FoodPlaceListProps = {
+  foodList: FoodPlace[];
+  currCoords: FoodPlace["coordinates"];
 };
 
-function GymMap({ gymList, currCoords }: GymListProps) {
+function FoodPlaceMap({ foodList, currCoords }: FoodPlaceListProps) {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
@@ -24,21 +24,21 @@ function GymMap({ gymList, currCoords }: GymListProps) {
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: currCoords,
-      zoom: 15,
+      zoom: 17,
     });
 
     map.current.on("load", () => {
       const geojsonData = {
         type: "FeatureCollection",
-        features: gymList.map((gym) => ({
+        features: foodList.map((foodplace: FoodPlace) => ({
           type: "Feature",
           properties: {
-            name: gym.name,
-            description: gym.description || "",
+            name: foodplace.name,
+            description: foodplace.description || "",
           },
           geometry: {
             type: "Point",
-            coordinates: gym.coordinates,
+            coordinates: foodplace.coordinates,
           },
         })),
       } as GeoJSON.FeatureCollection<GeoJSON.Point>;
@@ -86,11 +86,11 @@ function GymMap({ gymList, currCoords }: GymListProps) {
       map.current?.remove();
       map.current = null;
     };
-  }, [gymList, currCoords]);
+  }, [foodList, currCoords]);
 
 
 
   return <div ref={mapContainer} style={{ width: "100%", height: "500px" }} />;
 }
 
-export default GymMap;
+export default FoodPlaceMap;
