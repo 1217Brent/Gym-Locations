@@ -1,20 +1,30 @@
-import { GymCard } from "./GymCard";
-import gymLocations from "../gymData/gymData";
-import { Gym } from "../dataTypes/Gym";
-import { JSX } from "react";
+"use client"
 
-function GymList(): JSX.Element {
+import { JSX } from "react";
+import { Gym } from "../dataTypes/Gym";
+import { GymCard } from "./GymCard";
+
+
+interface GymListProps {
+  gyms: Gym[];
+  handleSelectCoordinates: (coordinates: Gym["coordinates"]) => void;
+}
+
+function GymList({ gyms, handleSelectCoordinates }: GymListProps): JSX.Element {
   return (
-    <>
-      {gymLocations.map((gym: Omit<Gym, "coordinates">) => (
+    <div className="flex flex-wrap gap-6 justify-center">
+      {gyms.map((gym) => (
         <GymCard
           key={gym.id}
-          image={gym.image}
-          description={gym.description}
-          name={gym.name}
+          gym={{
+            name: gym.name,
+            image: gym.image,
+            description: gym.description,
+          }}
+          handleCoordsChange={() => handleSelectCoordinates(gym.coordinates)}
         />
       ))}
-    </>
+    </div>
   );
 }
 
