@@ -11,7 +11,7 @@ export default function NavBar() {
     }
 
   return (
-    <nav className="bg-[#003366] text-white flex justify-between items-center py-3 px-6 fixed right-0 left-0 top-0 z-50 shadow-md">
+    <nav className="z-10 bg-[#003366] text-white flex justify-between items-center py-3 px-6 fixed right-0 left-0 top-0 z-50 shadow-md">
       {/* Left: Hitotsubashi text */}
       <div className="text-xl font-bold tracking-wide">
         Taste Tokyo

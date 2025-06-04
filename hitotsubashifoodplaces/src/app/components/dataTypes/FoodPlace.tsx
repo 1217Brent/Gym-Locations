@@ -5,4 +5,5 @@ export interface FoodPlace {
     coordinates: [number, number];
     description: string;
     link: string;
+    cusine: string[];
 }
